@@ -1,4 +1,4 @@
-package com.bruna.movie.feature.application
+package com.bruna.movie.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -10,7 +10,9 @@ import com.bruna.movie.data.Movie.Companion.MovieDiffItemCallback
 import com.bruna.movie.data.State
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
 
-class MovieListAdapter : PagedListAdapter<Movie, BaseViewHolder>(MovieDiffItemCallback) {
+class MovieListAdapter(
+    val onMovieSelected: (Int) -> Unit
+) : PagedListAdapter<Movie, BaseViewHolder>(MovieDiffItemCallback) {
 
     private var state: State? = null
 
@@ -32,8 +34,13 @@ class MovieListAdapter : PagedListAdapter<Movie, BaseViewHolder>(MovieDiffItemCa
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         when (getItemViewType(position)) {
-            R.layout.item_list_movie -> getItem(position)?.let((holder as MovieViewHolder)::bind)
-            R.layout.item_list_state -> state?.let((holder as NetworkViewHolder)::bind)
+            R.layout.item_list_movie -> {
+                getItem(position)?.let { item ->
+                    holder.bind(item)
+                    holder.itemView.setOnClickListener { onMovieSelected(item.id) }
+                }
+            }
+            R.layout.item_list_state -> state?.let { holder.bind(it) }
         }
     }
 

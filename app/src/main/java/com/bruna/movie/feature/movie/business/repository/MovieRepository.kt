@@ -8,4 +8,5 @@ interface MovieRepository {
     fun getMovies(): Observable<Result<MovieDiscoverResponse>>
     fun getMoviesLocal(): Observable<Result<List<Movie>>>
     fun getMoviesRemote(page: Int): Observable<Result<List<Movie>>>
+    fun getMovieDetail(id: Int): Observable<Result<Movie>>
 }

@@ -37,4 +37,10 @@ class MovieRepositoryImpl @Inject constructor(
             .map { success(it) }
             .onErrorReturn { error(it) }
     }
+
+    override fun getMovieDetail(id: Int): Observable<Result<Movie>> {
+        return dao.getMovieById(id)
+            .map { success(it) }
+            .onErrorReturn { failure(it) }
+    }
 }

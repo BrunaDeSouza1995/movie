@@ -3,6 +3,7 @@ package com.bruna.movie.feature.movie.gateway
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -11,19 +12,23 @@ import com.bruna.movie.data.Movie
 import com.bruna.movie.drivers.extension.asLiveData
 import com.bruna.movie.feature.movie.business.datasource.MovieLocalDataSourceFactory
 import com.bruna.movie.feature.movie.business.datasource.MovieRemoteDataSourceFactory
+import com.bruna.movie.feature.movie.business.usecase.GetMovieDetailByIdUseCase
 
 private const val LIST_SIZE = 20
 
 class MovieViewModel @ViewModelInject constructor(
     @Assisted savedStateHandle: SavedStateHandle,
     remoteDataSourceFactory: MovieRemoteDataSourceFactory,
-    private val localDataSourceFactory: MovieLocalDataSourceFactory
+    private val localDataSourceFactory: MovieLocalDataSourceFactory,
+    private val getMovieDetailByIdUseCase: GetMovieDetailByIdUseCase
 ) : ViewModel() {
 
     private val moviesMediatorLiveData = MediatorLiveData<PagedList<Movie>>()
+    private val movieMutableLiveData = MutableLiveData<Movie?>()
 
-    val moviesLiveData = moviesMediatorLiveData.asLiveData()
     val loadedLiveData = remoteDataSourceFactory.loadedStateLiveData.asLiveData()
+    val moviesLiveData = moviesMediatorLiveData.asLiveData()
+    val movieLiveData = movieMutableLiveData.asLiveData()
 
     init {
         val remoteLivePagedList =
@@ -41,6 +46,13 @@ class MovieViewModel @ViewModelInject constructor(
             .setInitialLoadSizeHint(LIST_SIZE)
             .setPageSize(LIST_SIZE)
             .build()
+    }
+
+    fun navigateToMovieDetail(id: Int) {
+        getMovieDetailByIdUseCase(
+            param = id,
+            success = { movieMutableLiveData.postValue(it) },
+        )
     }
 
     inner class BoundaryCallback : PagedList.BoundaryCallback<Movie>() {

@@ -14,7 +14,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".feature.movie.ui.MovieActivity">
+        <activity android:name="com.bruna.movie.feature.movie.ui.MovieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

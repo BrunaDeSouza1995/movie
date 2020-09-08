@@ -10,9 +10,12 @@ import io.reactivex.Observable
 @Dao
 interface MovieDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(movies: List<Movie>)
+
     @Query("SELECT * FROM movie")
     fun getMovies(): Observable<List<Movie>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(movies:List<Movie>)
+    @Query("SELECT * FROM movie WHERE id =:id")
+    fun getMovieById(id: Int): Observable<Movie>
 }

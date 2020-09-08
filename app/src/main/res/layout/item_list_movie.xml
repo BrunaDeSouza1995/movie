@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:elevation="0dp"
             android:importantForAccessibility="no"
-            android:scaleType="fitXY"
+            android:scaleType="matrix"
             android:src="@drawable/ic_movies_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             android:id="@+id/itemMovieDivider"
             android:layout_width="6dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/ticket"
+            android:background="@drawable/line_dotted_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/itemMovieImage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
-            android:gravity="center"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline6"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +64,5 @@
             app:layout_constraintStart_toStartOf="@id/itemMovieTitleText"
             tools:text="01/01/2000" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
 

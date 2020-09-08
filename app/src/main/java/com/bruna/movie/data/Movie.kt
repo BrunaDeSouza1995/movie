@@ -3,6 +3,7 @@ package com.bruna.movie.data
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.bruna.movie.drivers.network.FILE_BASE_URL
 import com.bruna.movie.drivers.network.response.MovieDiscoverItemResponse
 
 @Entity(tableName = "movie")
@@ -12,7 +13,7 @@ data class Movie(
     val overview: String,
     val releaseDate: String,
     val poster: String,
-    val genre: String
+    val backdrop: String
 ) {
     companion object {
 
@@ -32,8 +33,8 @@ data class Movie(
                 response.title,
                 response.overview,
                 response.release_date,
-                "https://image.tmdb.org/t/p/original${response.poster_path.orEmpty()}",
-                response.genre_ids.joinToString()
+                FILE_BASE_URL + response.poster_path.orEmpty(),
+                FILE_BASE_URL + response.backdrop_path.orEmpty()
             )
         }
     }

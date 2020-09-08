@@ -47,7 +47,7 @@ class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
             .build()
 
         val materialShapeDrawable = MaterialShapeDrawable(shapeAppearanceModel).apply {
-            setTint(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+            setTint(ContextCompat.getColor(itemView.context, R.color.colorPrimaryLight))
             paintStyle = Paint.Style.FILL_AND_STROKE
         }
 

@@ -1,32 +1,58 @@
 package com.bruna.movie.feature.movie.gateway
 
-import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.bruna.movie.feature.movie.usecase.GetMoviesUseCase
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.bruna.movie.data.Movie
+import com.bruna.movie.drivers.extension.asLiveData
+import com.bruna.movie.feature.movie.business.datasource.MovieLocalDataSourceFactory
+import com.bruna.movie.feature.movie.business.datasource.MovieRemoteDataSourceFactory
+
+private const val LIST_SIZE = 20
 
 class MovieViewModel @ViewModelInject constructor(
     @Assisted savedStateHandle: SavedStateHandle,
-    val getMoviesUseCase: GetMoviesUseCase
+    remoteDataSourceFactory: MovieRemoteDataSourceFactory,
+    private val localDataSourceFactory: MovieLocalDataSourceFactory
 ) : ViewModel() {
 
+    private val moviesMediatorLiveData = MediatorLiveData<PagedList<Movie>>()
+
+    val moviesLiveData = moviesMediatorLiveData.asLiveData()
+    val loadedLiveData = remoteDataSourceFactory.loadedStateLiveData.asLiveData()
+
     init {
-        getMoviesUseCase(
-            success = {
-                Log.d("Bruna", "Success: ${it.toString()}")
-            },
-            error = {
-                Log.d("Bruna", "Error: ${it?.message}")
-            }
-        )
+        val remoteLivePagedList =
+            LivePagedListBuilder(remoteDataSourceFactory, getPagedListConfig())
+                .setBoundaryCallback(BoundaryCallback())
+                .build()
+
+        moviesMediatorLiveData.addSource(remoteLivePagedList) { moviesMediatorLiveData.value = it }
     }
 
-    val teste = MutableLiveData<String>()
+    private fun getPagedListConfig(): PagedList.Config {
+        return PagedList.Config
+            .Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(LIST_SIZE)
+            .setPageSize(LIST_SIZE)
+            .build()
+    }
 
-    fun teste() {
-        teste.value = "Bruna"
+    inner class BoundaryCallback : PagedList.BoundaryCallback<Movie>() {
+        private val databaseLivePagedList =
+            LivePagedListBuilder(localDataSourceFactory, getPagedListConfig()).build()
+
+        override fun onZeroItemsLoaded() {
+            super.onZeroItemsLoaded()
+            moviesMediatorLiveData.addSource(databaseLivePagedList) {
+                moviesMediatorLiveData.value = it
+                moviesMediatorLiveData.removeSource(databaseLivePagedList)
+            }
+        }
     }
 }

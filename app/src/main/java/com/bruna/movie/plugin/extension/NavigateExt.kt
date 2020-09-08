@@ -1,4 +1,4 @@
-package com.bruna.movie.drivers.extension
+package com.bruna.movie.plugin.extension
 
 import androidx.annotation.IdRes
 import androidx.navigation.NavController

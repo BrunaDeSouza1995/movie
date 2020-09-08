@@ -1,6 +1,6 @@
-package com.bruna.movie.drivers.di
+package com.bruna.movie.plugin.di
 
-import com.bruna.movie.drivers.repository.MovieRepositoryImpl
+import com.bruna.movie.plugin.repository.MovieRepositoryImpl
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
 import dagger.Binds
 import dagger.Module

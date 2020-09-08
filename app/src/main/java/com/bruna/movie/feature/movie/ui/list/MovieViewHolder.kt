@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import coil.load
 import com.bruna.movie.R
-import com.bruna.movie.data.Movie
+import com.bruna.movie.model.Movie
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
 import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
 import com.google.android.material.shape.MaterialShapeDrawable

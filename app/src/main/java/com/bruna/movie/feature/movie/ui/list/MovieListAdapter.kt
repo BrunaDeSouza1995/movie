@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import com.bruna.movie.R
-import com.bruna.movie.data.LoadedState
-import com.bruna.movie.data.Movie
-import com.bruna.movie.data.Movie.Companion.MovieDiffItemCallback
-import com.bruna.movie.data.State
+import com.bruna.movie.model.LoadedState
+import com.bruna.movie.model.Movie
+import com.bruna.movie.model.Movie.Companion.MovieDiffItemCallback
+import com.bruna.movie.model.State
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
 
 class MovieListAdapter(

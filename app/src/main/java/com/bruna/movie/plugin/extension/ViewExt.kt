@@ -1,4 +1,4 @@
-package com.bruna.movie.drivers.extension
+package com.bruna.movie.plugin.extension
 
 import android.view.View
 

@@ -1,9 +1,8 @@
-package com.bruna.movie.drivers.di
+package com.bruna.movie.plugin.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room.databaseBuilder
-import com.bruna.movie.drivers.database.MovieDatabase
+import com.bruna.movie.plugin.database.MovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

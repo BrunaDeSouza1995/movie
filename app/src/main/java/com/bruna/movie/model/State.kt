@@ -1,4 +1,4 @@
-package com.bruna.movie.data
+package com.bruna.movie.model
 
 private const val ERROR_GENERIC = "Erro inesperado"
 

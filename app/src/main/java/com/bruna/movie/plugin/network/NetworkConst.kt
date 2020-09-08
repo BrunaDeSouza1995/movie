@@ -1,4 +1,4 @@
-package com.bruna.movie.drivers.network
+package com.bruna.movie.plugin.network
 
 const val API_BASE_URL = "https://api.themoviedb.org/3/"
 const val FILE_BASE_URL = "https://image.tmdb.org/t/p/original"

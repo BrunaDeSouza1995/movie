@@ -8,8 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.bruna.movie.data.Movie
-import com.bruna.movie.drivers.extension.asLiveData
+import com.bruna.movie.model.Movie
+import com.bruna.movie.plugin.extension.asLiveData
 import com.bruna.movie.feature.movie.business.datasource.MovieLocalDataSourceFactory
 import com.bruna.movie.feature.movie.business.datasource.MovieRemoteDataSourceFactory
 import com.bruna.movie.feature.movie.business.usecase.GetMovieDetailByIdUseCase

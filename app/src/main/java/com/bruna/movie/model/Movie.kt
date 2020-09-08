@@ -1,10 +1,10 @@
-package com.bruna.movie.data
+package com.bruna.movie.model
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.bruna.movie.drivers.network.FILE_BASE_URL
-import com.bruna.movie.drivers.network.response.MovieDiscoverItemResponse
+import com.bruna.movie.plugin.network.FILE_BASE_URL
+import com.bruna.movie.plugin.network.response.MovieDiscoverItemResponse
 
 @Entity(tableName = "movie")
 data class Movie(

@@ -1,6 +1,6 @@
-package com.bruna.movie.drivers.network
+package com.bruna.movie.plugin.network
 
-import com.bruna.movie.drivers.network.response.MovieDiscoverResponse
+import com.bruna.movie.plugin.network.response.MovieDiscoverResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

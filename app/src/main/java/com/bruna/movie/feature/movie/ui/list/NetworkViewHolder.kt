@@ -1,12 +1,12 @@
 package com.bruna.movie.feature.movie.ui.list
 
 import android.view.View
-import com.bruna.movie.data.FailedState
-import com.bruna.movie.data.LoadedState
-import com.bruna.movie.data.LoadingState
-import com.bruna.movie.data.State
-import com.bruna.movie.drivers.extension.gone
-import com.bruna.movie.drivers.extension.visible
+import com.bruna.movie.model.FailedState
+import com.bruna.movie.model.LoadedState
+import com.bruna.movie.model.LoadingState
+import com.bruna.movie.model.State
+import com.bruna.movie.plugin.extension.gone
+import com.bruna.movie.plugin.extension.visible
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
 import kotlinx.android.synthetic.main.item_list_state.view.*
 

@@ -3,10 +3,10 @@ package com.bruna.movie.feature.movie.business.datasource
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.bruna.movie.data.*
-import com.bruna.movie.drivers.pading.PAGE_ONE
-import com.bruna.movie.drivers.pading.PAGE_TWO
-import com.bruna.movie.drivers.pading.getAdjacentPageKey
+import com.bruna.movie.model.*
+import com.bruna.movie.plugin.pading.PAGE_ONE
+import com.bruna.movie.plugin.pading.PAGE_TWO
+import com.bruna.movie.plugin.pading.getAdjacentPageKey
 import com.bruna.movie.feature.movie.business.usecase.GetMoviesRemoteUseCase
 import javax.inject.Inject
 

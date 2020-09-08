@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import coil.load
 import com.bruna.movie.R
-import com.bruna.movie.data.Movie
+import com.bruna.movie.model.Movie
 import com.bruna.movie.feature.movie.gateway.MovieViewModel
 import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

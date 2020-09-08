@@ -1,7 +1,7 @@
-package com.bruna.movie.drivers.di
+package com.bruna.movie.plugin.di
 
-import com.bruna.movie.drivers.network.API_BASE_URL
-import com.bruna.movie.drivers.network.MovieService
+import com.bruna.movie.plugin.network.API_BASE_URL
+import com.bruna.movie.plugin.network.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,9 +1,9 @@
-package com.bruna.movie.drivers.repository
+package com.bruna.movie.plugin.repository
 
-import com.bruna.movie.data.Movie
-import com.bruna.movie.drivers.database.dao.MovieDao
-import com.bruna.movie.drivers.network.MovieService
-import com.bruna.movie.drivers.network.response.MovieDiscoverResponse
+import com.bruna.movie.model.Movie
+import com.bruna.movie.plugin.database.dao.MovieDao
+import com.bruna.movie.plugin.network.MovieService
+import com.bruna.movie.plugin.network.response.MovieDiscoverResponse
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
 import io.reactivex.Observable
 import javax.inject.Inject

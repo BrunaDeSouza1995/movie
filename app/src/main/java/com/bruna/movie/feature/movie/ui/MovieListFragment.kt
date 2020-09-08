@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bruna.movie.R
-import com.bruna.movie.drivers.extension.navigateByAction
+import com.bruna.movie.plugin.extension.navigateByAction
 import com.bruna.movie.feature.movie.gateway.MovieViewModel
 import com.bruna.movie.feature.movie.ui.list.MovieListAdapter
 import dagger.hilt.android.AndroidEntryPoint

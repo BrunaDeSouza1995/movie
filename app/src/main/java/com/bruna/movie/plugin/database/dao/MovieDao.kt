@@ -1,10 +1,10 @@
-package com.bruna.movie.drivers.database.dao
+package com.bruna.movie.plugin.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.bruna.movie.data.Movie
+import com.bruna.movie.model.Movie
 import io.reactivex.Observable
 
 @Dao

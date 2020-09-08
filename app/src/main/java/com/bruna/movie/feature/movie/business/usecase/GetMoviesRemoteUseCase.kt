@@ -1,6 +1,6 @@
 package com.bruna.movie.feature.movie.business.usecase
 
-import com.bruna.movie.data.Movie
+import com.bruna.movie.model.Movie
 import com.bruna.movie.feature.base.usecase.UseCase
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
 import io.reactivex.Observable

@@ -1,4 +1,4 @@
-package com.bruna.movie.drivers.network.response
+package com.bruna.movie.plugin.network.response
 
 data class MovieDiscoverResponse(
     val page: Int,

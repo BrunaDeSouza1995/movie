@@ -5,7 +5,7 @@ import com.bruna.movie.drivers.database.dao.MovieDao
 import com.bruna.movie.drivers.network.MovieService
 import com.bruna.movie.drivers.network.response.MovieDiscoverResponse
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 import javax.inject.Inject
 import kotlin.Result.Companion.failure
 import kotlin.Result.Companion.success

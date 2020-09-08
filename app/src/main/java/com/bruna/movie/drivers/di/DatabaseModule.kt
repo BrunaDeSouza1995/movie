@@ -1,13 +1,15 @@
 package com.bruna.movie.drivers.di
 
+import android.app.Application
 import android.content.Context
-import androidx.room.Room
+import androidx.room.Room.databaseBuilder
 import com.bruna.movie.drivers.database.MovieDatabase
-import com.bruna.movie.drivers.database.dao.MovieDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Singleton
 
 private const val NAME_DATABASE = "movie_database"
 
@@ -15,20 +17,13 @@ private const val NAME_DATABASE = "movie_database"
 @InstallIn(ApplicationComponent::class)
 class DatabaseModule {
 
-    @Volatile
-    private var INSTANCE: MovieDatabase? = null
-
+    @Singleton
     @Provides
-    fun getInstanceDatabase(context: Context): MovieDatabase {
-        return INSTANCE ?: synchronized(this) {
-            Room.databaseBuilder(context, MovieDatabase::class.java, NAME_DATABASE)
-                .build()
-                .also { INSTANCE = it }
-        }
+    fun getInstanceDatabase(@ApplicationContext context: Context): MovieDatabase {
+        return databaseBuilder(context, MovieDatabase::class.java, NAME_DATABASE).build()
     }
 
+    @Singleton
     @Provides
-    fun provideMovieDao(database: MovieDatabase): MovieDao? {
-        return database.movieDao()
-    }
+    fun provideMovieDao(database: MovieDatabase) = database.movieDao()
 }

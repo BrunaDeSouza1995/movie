@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bruna.movie.R
 import com.bruna.movie.feature.movie.gateway.MovieViewModel
+import com.bruna.movie.feature.movie.ui.list.MovieListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_movie.*
 
@@ -12,31 +13,22 @@ import kotlinx.android.synthetic.main.activity_movie.*
 class MovieActivity : AppCompatActivity() {
 
     private val viewModel: MovieViewModel by viewModels()
+    private val adapter = MovieListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
+        setUpList()
+        setUpObservers()
+    }
 
-//        val build = ShapeAppearanceModel().toBuilder()
-////            .setAllCorners(InnerCutCornerTreatment(20F))
-//            .setLeftEdge(CurvedEdgeTreatment(75F))
-//            .setRightEdge(CurvedEdgeTreatment(75F))
-//            .build()
-//
-//
-//        val shapeDrawable = MaterialShapeDrawable()
-//        shapeDrawable.fillColor = ColorStateList.valueOf(
-//            ContextCompat.getColor(
-//                this,
-//                R.color.colorAccent
-//            )
-//        )
-//        shapeDrawable.shapeAppearanceModel = build
-//        card.background = shapeDrawable
+    private fun setUpList() {
+        movieList.adapter = adapter
+    }
 
-        viewModel.teste()
-
-        viewModel.teste.observe(this) { testText.text = it }
+    private fun setUpObservers() {
+        viewModel.moviesLiveData.observe(this, adapter::submitList)
+        viewModel.loadedLiveData.observe(this, adapter::submitNetwork)
     }
 }
 

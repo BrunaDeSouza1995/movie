@@ -3,7 +3,7 @@ package com.bruna.movie.feature.movie.business.usecase
 import com.bruna.movie.data.Movie
 import com.bruna.movie.feature.base.usecase.UseCase
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 import javax.inject.Inject
 
 class GetMoviesLocalUseCase @Inject constructor(

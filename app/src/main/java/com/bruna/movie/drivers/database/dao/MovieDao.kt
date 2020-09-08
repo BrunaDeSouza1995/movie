@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bruna.movie.data.Movie
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 
 @Dao
 interface MovieDao {

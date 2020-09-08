@@ -1,7 +1,7 @@
 package com.bruna.movie.drivers.network
 
 import com.bruna.movie.drivers.network.response.MovieDiscoverResponse
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 

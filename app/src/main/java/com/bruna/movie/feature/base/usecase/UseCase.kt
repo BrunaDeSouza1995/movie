@@ -1,8 +1,8 @@
 package com.bruna.movie.feature.base.usecase
 
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.schedulers.Schedulers.io
+import io.reactivex.Observable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers.io
 import kotlin.Result.Companion.failure
 
 abstract class UseCase<I, O> {

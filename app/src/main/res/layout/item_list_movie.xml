@@ -2,9 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card"
-    android:layout_width="300dp"
+    android:id="@+id/itemMovieCard"
+    android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:layout_marginTop="12dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -17,10 +18,12 @@
 
         <ImageView
             android:id="@+id/itemMovieImage"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
+            android:elevation="0dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_launcher_foreground"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_movies_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,12 +55,14 @@
 
         <TextView
             android:id="@+id/itemMovieReleaseDateText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="end"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/itemMovieTitleText"
             app:layout_constraintStart_toStartOf="@id/itemMovieTitleText"
-            app:layout_constraintTop_toBottomOf="@id/itemMovieTitleText"
             tools:text="01/01/2000" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

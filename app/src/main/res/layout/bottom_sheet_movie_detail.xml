@@ -8,14 +8,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/padding_default"
+        android:paddingBottom="@dimen/padding_default">
 
         <ImageView
             android:id="@+id/movieDetailBackdrop"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/backdrop_height"
             android:importantForAccessibility="no"
-            android:scaleType="matrix"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,10 +24,13 @@
 
         <TextView
             android:id="@+id/movieDetailTitle"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toTopOf="@id/itemMovieDivider"
             app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
             app:layout_constraintStart_toStartOf="@id/itemMovieDivider"
@@ -36,9 +40,9 @@
         <View
             android:id="@+id/itemMovieDivider"
             android:layout_width="0dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="@dimen/divider_horizontal_height"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:background="@drawable/line_dotted_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +53,8 @@
             android:id="@+id/movieDetailOverview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
             app:layout_constraintStart_toStartOf="@id/itemMovieDivider"

@@ -4,6 +4,7 @@ import android.graphics.Paint
 import android.view.View
 import androidx.core.content.ContextCompat
 import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.bruna.movie.R
 import com.bruna.movie.model.Movie
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
@@ -30,6 +31,7 @@ class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
         posterImage.load(poster) {
             placeholder(R.drawable.ic_movies_24dp)
             error(R.drawable.ic_error_24dp)
+            transformations(RoundedCornersTransformation())
         }
     }
 

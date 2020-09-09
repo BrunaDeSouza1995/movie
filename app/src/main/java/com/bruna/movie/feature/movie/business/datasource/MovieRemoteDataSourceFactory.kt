@@ -19,45 +19,45 @@ class MovieRemoteDataSourceFactory @Inject constructor(
     override fun create(): DataSource<Int, Movie> = RemotePageKeyedDataSource()
 
     inner class RemotePageKeyedDataSource : PageKeyedDataSource<Int, Movie>() {
-        override fun loadInitial(
-            params: LoadInitialParams<Int>,
-            callback: LoadInitialCallback<Int, Movie>
-        ) {
+
+        override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
             loadedStateLiveData.postValue(LoadingState)
             useCase(
                 PAGE_ONE,
-                success = {
-                    if (!it.isNullOrEmpty()) callback.onResult(it, PAGE_ONE, PAGE_TWO)
-                    loadedStateLiveData.postValue(LoadedState)
-                },
-                error = {
-                    callback.onResult(listOf(), PAGE_ONE, PAGE_TWO)
-                    if (it != null) loadedStateLiveData.postValue(FailedState(it.message))
-                }
+                onSuccess = { handleUseCaseLoadInitialSuccess(it.orEmpty(), callback) },
+                onError = { handleUseCaseLoadInitialError(it, callback) }
             )
         }
 
-        override fun loadAfter(
-            params: LoadParams<Int>,
-            callback: LoadCallback<Int, Movie>
-        ) {
-            val page = params.key
-            loadedStateLiveData.postValue(LoadingState)
-            useCase(page,
-                success = {
-                    if (!it.isNullOrEmpty()) callback.onResult(it, params.getAdjacentPageKey())
-                    loadedStateLiveData.postValue(LoadedState)
-
-                },
-                error = {
-                    callback.onResult(listOf(), page)
-                    if (it != null) loadedStateLiveData.postValue(FailedState(it.message))
-                })
+        private fun handleUseCaseLoadInitialSuccess(list: List<Movie>, callback: LoadInitialCallback<Int, Movie>) {
+            if(list.isNotEmpty()) callback.onResult(list, PAGE_ONE, PAGE_TWO)
+            loadedStateLiveData.postValue(LoadedState)
         }
 
-        override fun loadBefore(
-            params: LoadParams<Int>,
-            callback: LoadCallback<Int, Movie>
-        ) = Unit
+        private fun handleUseCaseLoadInitialError(throwable: Throwable, callback: LoadInitialCallback<Int, Movie>) {
+            callback.onResult(listOf(), PAGE_ONE, PAGE_TWO)
+            loadedStateLiveData.postValue(FailedState(throwable.message))
+        }
+
+        override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
+            val page = params.key
+            loadedStateLiveData.postValue(LoadingState)
+            useCase(
+                page,
+                onSuccess = { handleUseCaseLoadAfterSuccess(it.orEmpty(), callback, params) },
+                onError = { handleUseCaseLoadAfterError(callback, params.key, it) })
+        }
+
+        private fun handleUseCaseLoadAfterSuccess(list: List<Movie>, callback: LoadCallback<Int, Movie>, params: LoadParams<Int>) {
+            if(list.isNotEmpty())  callback.onResult(list, params.getAdjacentPageKey())
+            loadedStateLiveData.postValue(LoadedState)
+        }
+
+        private fun handleUseCaseLoadAfterError(callback: LoadCallback<Int, Movie>, page: Int, throwable: Throwable) {
+            callback.onResult(listOf(), page)
+            loadedStateLiveData.postValue(FailedState(throwable.message))
+        }
+
+        override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
     }
 }

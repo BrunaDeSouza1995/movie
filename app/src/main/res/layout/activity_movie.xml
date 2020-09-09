@@ -8,16 +8,16 @@
         android:id="@+id/movieToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="0dp"
+        android:elevation="@dimen/non_elevation"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Filmes Recentes"
+        app:title="@string/movies_latest"
         app:titleTextAppearance="@style/TextAppearance.MdcTypographyStyles.Headline5"
         app:titleTextColor="@color/colorSecondaryDark" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/supportNav"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"

@@ -3,6 +3,7 @@
     <item
         android:bottom="-8dp"
         android:left="-8dp"
+        android:right="4dp"
         android:top="-8dp">
         <shape>
             <solid android:color="@android:color/transparent" />

@@ -49,10 +49,7 @@ class MovieViewModel @ViewModelInject constructor(
     }
 
     fun navigateToMovieDetail(id: Int) {
-        getMovieDetailByIdUseCase(
-            param = id,
-            success = { movieMutableLiveData.postValue(it) },
-        )
+        getMovieDetailByIdUseCase(param = id, onSuccess = movieMutableLiveData::postValue)
     }
 
     inner class BoundaryCallback : PagedList.BoundaryCallback<Movie>() {

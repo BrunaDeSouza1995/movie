@@ -4,7 +4,7 @@ import android.view.View
 import com.bruna.movie.feature.base.ui.list.BaseViewHolder
 import com.bruna.movie.model.Movie
 import com.bruna.movie.plugin.extension.createTicketViewSmall
-import com.bruna.movie.plugin.extension.load
+import com.bruna.movie.plugin.extension.loadImage
 import kotlinx.android.synthetic.main.item_list_movie.view.*
 
 class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
@@ -18,7 +18,7 @@ class MovieViewHolder(itemView: View) : BaseViewHolder(itemView) {
         val (_, title, _, releaseDate, poster, _) = item as Movie
         titleText.text = title
         releaseDateText.text = releaseDate
-        posterImage.load(poster)
+        posterImage.loadImage(poster)
         card.createTicketViewSmall()
     }
 }

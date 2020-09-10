@@ -10,7 +10,7 @@ class GetMovieDetailByIdUseCase @Inject constructor(
     val repository: MovieRepository
 ) : UseCase<Int, Movie>() {
 
-    override fun execute(param: Int?): Observable<Result<Movie>> {
-        return param?.let { repository.getMovieDetail(it) } ?: Observable.empty()
+    override fun execute(input: Int?): Observable<Result<Movie>> {
+        return input?.let { repository.getMovieDetail(it) } ?: Observable.empty()
     }
 }

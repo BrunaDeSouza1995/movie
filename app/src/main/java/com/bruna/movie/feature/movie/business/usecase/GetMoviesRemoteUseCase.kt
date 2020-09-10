@@ -10,7 +10,7 @@ class GetMoviesRemoteUseCase @Inject constructor(
     private val repository: MovieRepository
 ) : UseCase<Int, List<Movie>>() {
 
-    override fun execute(param: Int?): Observable<Result<List<Movie>>> {
-        return param?.let(repository::getMoviesRemote) ?: Observable.empty()
+    override fun execute(input: Int?): Observable<Result<List<Movie>>> {
+        return input?.let(repository::getMoviesRemote) ?: Observable.empty()
     }
 }

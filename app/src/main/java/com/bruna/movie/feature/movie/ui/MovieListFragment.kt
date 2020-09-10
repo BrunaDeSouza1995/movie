@@ -14,7 +14,6 @@ import com.bruna.movie.feature.movie.ui.list.MovieListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
-@AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
     private val viewModel: MovieViewModel by activityViewModels()
@@ -41,7 +40,6 @@ class MovieListFragment : Fragment() {
     private fun setUpObservers() {
         viewModel.loadedLiveData.observe(viewLifecycleOwner, adapter::submitNetwork)
         viewModel.moviesLiveData.observe(viewLifecycleOwner, adapter::submitList)
-        viewModel.movieLiveData.observe(viewLifecycleOwner) {
-            findNavController().navigateByAction(R.id.action_movieListFragment_to_movieDetailBottomSheet) }
+        viewModel.movieLiveData.observe(viewLifecycleOwner) { findNavController().navigateByAction(R.id.action_movieListFragment_to_movieDetailBottomSheet) }
     }
 }

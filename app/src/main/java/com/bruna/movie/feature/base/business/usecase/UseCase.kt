@@ -7,7 +7,7 @@ import kotlin.Result.Companion.failure
 
 abstract class UseCase<I, O> {
 
-    abstract fun execute(param: I?): Observable<Result<O>>
+    abstract fun execute(input: I?): Observable<Result<O>>
 
     operator fun invoke(
         input: I? = null,

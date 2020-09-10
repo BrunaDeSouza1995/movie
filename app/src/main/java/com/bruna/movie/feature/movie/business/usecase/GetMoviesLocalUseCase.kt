@@ -10,7 +10,7 @@ class GetMoviesLocalUseCase @Inject constructor(
     private val repository: MovieRepository
 ) : UseCase<Nothing, List<Movie>>() {
 
-    override fun execute(param: Nothing?): Observable<Result<List<Movie>>> {
+    override fun execute(input: Nothing?): Observable<Result<List<Movie>>> {
         return repository.getMoviesLocal()
     }
 }

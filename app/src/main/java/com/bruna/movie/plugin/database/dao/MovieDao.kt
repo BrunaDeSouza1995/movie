@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bruna.movie.model.Movie
 import io.reactivex.Observable
+import org.jetbrains.annotations.TestOnly
 
 @Dao
 interface MovieDao {
@@ -14,7 +15,11 @@ interface MovieDao {
     fun insert(movies: List<Movie>)
 
     @Query("SELECT * FROM movie")
-    fun getMovies(): Observable<List<Movie>>
+    fun getMoviesObservable(): Observable<List<Movie>>
+
+    @TestOnly
+    @Query("SELECT * FROM movie")
+    fun getMovies(): List<Movie>
 
     @Query("SELECT * FROM movie WHERE id =:id")
     fun getMovieById(id: Int): Observable<Movie>

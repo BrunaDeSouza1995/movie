@@ -7,7 +7,6 @@ import com.bruna.movie.plugin.network.response.MovieDiscoverResponse
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
 import io.reactivex.Observable
 import javax.inject.Inject
-import kotlin.Result.Companion.failure
 import kotlin.Result.Companion.success
 
 class MovieRepositoryImpl @Inject constructor(
@@ -21,7 +20,7 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     override fun getMoviesLocal(): Observable<Result<List<Movie>>> {
-        return dao.getMovies()
+        return dao.getMoviesObservable()
             .map { success(it) }
     }
 

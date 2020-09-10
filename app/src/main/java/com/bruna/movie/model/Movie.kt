@@ -16,6 +16,7 @@ data class Movie(
     val backdrop: String
 ) {
     companion object {
+        val mock = Movie(1, "String", "Overview", "releaseDate", "poster", "backdrop")
 
         val MovieDiffItemCallback = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {

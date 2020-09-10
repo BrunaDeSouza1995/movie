@@ -16,23 +16,14 @@ class MovieLocalDataSourceFactory @Inject constructor(
 
     inner class LocalPageKeyedDataSource : PageKeyedDataSource<Int, Movie>() {
 
-        override fun loadInitial(
-            params: LoadInitialParams<Int>,
-            callback: LoadInitialCallback<Int, Movie>
-        ) {
-            useCase(
-                success = { if (!it.isNullOrEmpty()) callback.onResult(it, PAGE_ZERO, PAGE_ONE) }
-            )
+        override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
+            useCase {
+                success = { if(it.isNotEmpty()) callback.onResult(it, PAGE_ZERO, PAGE_ONE) }
+            }
         }
 
-        override fun loadAfter(
-            params: LoadParams<Int>,
-            callback: LoadCallback<Int, Movie>
-        ) = Unit
+        override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
 
-        override fun loadBefore(
-            params: LoadParams<Int>,
-            callback: LoadCallback<Int, Movie>
-        ) = Unit
+        override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
     }
 }

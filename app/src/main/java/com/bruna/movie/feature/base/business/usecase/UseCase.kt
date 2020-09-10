@@ -1,4 +1,4 @@
-package com.bruna.movie.feature.base.usecase
+package com.bruna.movie.feature.base.business.usecase
 
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
@@ -10,16 +10,17 @@ abstract class UseCase<I, O> {
     abstract fun execute(param: I?): Observable<Result<O>>
 
     operator fun invoke(
-        param: I? = null,
-        success: (O?) -> Unit = {},
-        error: (Throwable?) -> Unit = {}
+        input: I? = null,
+        onDispatchResult: UseCaseResultDSL<O>.(result: Result<O>) -> Unit
     ): Disposable {
-        return execute(param)
+        return execute(input)
             .onErrorReturn { failure(it) }
             .subscribeOn(io())
             .observeOn(io())
             .subscribe {
-                if (it.isSuccess) success(it.getOrNull()) else error(it.exceptionOrNull())
+                UseCaseResultDSL<O>()
+                    .apply { onDispatchResult(it) }
+                    .run { it.initializer(success, failure) }
             }
     }
 }

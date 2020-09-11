@@ -1,65 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movieDetailCard"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bruna.movie.feature.movie.gateway.MovieViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/movieDetailCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="@dimen/padding_default"
         android:paddingBottom="@dimen/padding_default">
 
-        <ImageView
-            android:id="@+id/movieDetailBackdrop"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/backdrop_height"
-            android:importantForAccessibility="no"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_movies_24dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/movieDetailTitle"
-            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:gravity="center"
-            android:textAllCaps="true"
-            app:layout_constraintBottom_toTopOf="@id/itemMovieDivider"
-            app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
-            app:layout_constraintStart_toStartOf="@id/itemMovieDivider"
-            app:layout_constraintTop_toBottomOf="@id/movieDetailBackdrop"
-            tools:text="Fight Club" />
+            <ImageView
+                android:id="@+id/movieDetailBackdrop"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/backdrop_height"
+                android:importantForAccessibility="no"
+                android:src="@{viewModel.movieLiveData.backdrop}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_movies_24dp" />
 
-        <View
-            android:id="@+id/itemMovieDivider"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/divider_horizontal_height"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/line_dotted_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/movieDetailTitle"
+                style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:gravity="center"
+                android:text="@{viewModel.movieLiveData.title}"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toTopOf="@id/itemMovieDivider"
+                app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
+                app:layout_constraintStart_toStartOf="@id/itemMovieDivider"
+                app:layout_constraintTop_toBottomOf="@id/movieDetailBackdrop"
+                tools:text="Fight Club" />
 
-        <TextView
-            android:id="@+id/movieDetailOverview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_small"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
-            app:layout_constraintStart_toStartOf="@id/itemMovieDivider"
-            app:layout_constraintTop_toBottomOf="@id/itemMovieDivider"
-            tools:text="A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground fight clubs forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion" />
+            <View
+                android:id="@+id/itemMovieDivider"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/divider_horizontal_height"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/line_dotted_horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/movieDetailOverview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{viewModel.movieLiveData.overview}"
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Body2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/itemMovieDivider"
+                app:layout_constraintStart_toStartOf="@id/itemMovieDivider"
+                app:layout_constraintTop_toBottomOf="@id/itemMovieDivider"
+                tools:text="A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground fight clubs forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -9,8 +9,8 @@ The Movie app uses [API The Movie Db](https://developers.themoviedb.org/3/movies
 * Navigation >> Also ensures a consistent and predictable user experience by adhering to an established set of principles
 * Room >> provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite
 * Data Binding >> support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically
-* LiveData - observable data holder class
-* ViewModel - designed to store and manage UI-related data in a lifecycle conscious way
+* LiveData >> observable data holder class
+* ViewModel >> designed to store and manage UI-related data in a lifecycle conscious way
 
 #### Connectivity
 * Retrofit

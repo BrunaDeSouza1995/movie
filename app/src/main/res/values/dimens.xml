@@ -2,22 +2,13 @@
 <resources>
 
     <!--MARGIN-->
-    <dimen name="margin_non">0dp</dimen>
-    <dimen name="margin_smallest">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_medium">24dp</dimen>
-    <dimen name="margin_large">32dp</dimen>
-    <dimen name="margin_xlarge">64dp</dimen>
 
     <!--PADDING-->
-    <dimen name="padding_smaller">4dp</dimen>
     <dimen name="padding_small">8dp</dimen>
-    <dimen name="padding_small_2">12dp</dimen>
-    <dimen name="padding_small_3">14dp</dimen>
     <dimen name="padding_default">16dp</dimen>
-    <dimen name="padding_large">24dp</dimen>
-    <dimen name="padding_large_2">48dp</dimen>
 
     <!--ELEVATION-->
     <dimen name="non_elevation">0dp</dimen>

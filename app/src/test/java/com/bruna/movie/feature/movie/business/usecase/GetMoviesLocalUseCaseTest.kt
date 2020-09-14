@@ -5,7 +5,7 @@ import com.bruna.movie.extension.assertEquals
 import com.bruna.movie.feature.base.business.usecase.assertFailure
 import com.bruna.movie.feature.base.business.usecase.assertSuccess
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
-import com.bruna.movie.mock.movieMock
+import com.bruna.movie.model.Movie.Companion.mock
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -21,7 +21,7 @@ class GetMoviesLocalUseCaseTest {
     @Mock
     lateinit var mockRepository: MovieRepository
 
-    lateinit var useCase: GetMoviesLocalUseCase
+    private lateinit var useCase: GetMoviesLocalUseCase
 
     @Before
     fun setUp() {
@@ -31,10 +31,10 @@ class GetMoviesLocalUseCaseTest {
 
     @Test
     fun `when execute use case then return success result`() {
-        `when`(mockRepository.getMoviesLocal()).thenReturn(listOf(movieMock).asSuccess())
+        `when`(mockRepository.getMoviesLocal()).thenReturn(listOf(mock).asSuccess())
 
         useCase.assertSuccess {
-            it.first().assertEquals(movieMock)
+            it.first().assertEquals(mock)
         }
     }
 

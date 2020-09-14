@@ -5,7 +5,7 @@ import com.bruna.movie.extension.assertEquals
 import com.bruna.movie.feature.base.business.usecase.assertFailure
 import com.bruna.movie.feature.base.business.usecase.assertSuccess
 import com.bruna.movie.feature.movie.business.repository.MovieRepository
-import com.bruna.movie.mock.movieMock
+import com.bruna.movie.model.Movie.Companion.mock
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class GetMovieDetailByIdUseCaseTest {
 
-    lateinit var useCase: GetMovieDetailByIdUseCase
+    private lateinit var useCase: GetMovieDetailByIdUseCase
 
     @Mock
     lateinit var mockRepository: MovieRepository
@@ -33,10 +33,10 @@ class GetMovieDetailByIdUseCaseTest {
 
     @Test
     fun `when execute use case then return success result`() {
-        `when`(mockRepository.getMovieDetail(id)).thenReturn(movieMock.asSuccess())
+        `when`(mockRepository.getMovieDetail(id)).thenReturn(mock.asSuccess())
 
         useCase.assertSuccess(id) {
-            it.assertEquals(movieMock)
+            it.assertEquals(mock)
         }
     }
 

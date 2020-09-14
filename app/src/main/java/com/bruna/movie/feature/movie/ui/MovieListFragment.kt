@@ -11,7 +11,6 @@ import com.bruna.movie.R
 import com.bruna.movie.plugin.extension.navigateByAction
 import com.bruna.movie.feature.movie.gateway.MovieViewModel
 import com.bruna.movie.feature.movie.ui.list.MovieListAdapter
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 class MovieListFragment : Fragment() {
